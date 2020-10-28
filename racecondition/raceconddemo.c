@@ -4,26 +4,26 @@
 
 int count=0;
 
-void *inc_thread(void *argv){
+void *inc_thread(void *arg){
     while(1){
     count++;
-    printf("inc_thread:%d\n",count);
+    printf("Inc_thread:%d\n",count);
     }
 }
 
-void *dec_thread(void *argv){
+void *dec_thread(void *arg){
     while(1){
     count--;
-    printf("dec_thread:%d\n",count);
+    printf("Dec_thread:%d\n",count);
     }
 }
 
 int main(int argc,char const *argv[]){
     pthread_t tid_inc,tid_dec;
-    pthread_create(&tid_inc,NULL,inc_thread,NULL);
-    pthread_create(&tid_dec,NULL,dec_thread,NULL);
+    pthread_create(&tid_inc, NULL, inc_thread, NULL);
+    pthread_create(&tid_dec, NULL, dec_thread, NULL);
  
-    pthread_join(tid_inc,NULL);
-    pthread_join(tid_dec,NULL);
+    pthread_join(tid_inc, NULL);
+    pthread_join(tid_dec, NULL);
     return 0;
 }
